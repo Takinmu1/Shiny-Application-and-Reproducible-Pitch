@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Shiny Presentation
 
-This presentation will be used to promote the shiny app created to graph mtcars data.  The app will help display the relationship between miles per gallon and horsepower filtered based on the number of cylinders a car has.
+This presentation will be used to promote the shiny app created to graph mtcars data.  The app will help display the relationship between miles per gallon and horsepower filtered based on the number of cylinders a car has.  The ui.R, server.R and RMD files can be found in my github repository located here:
+
+https://github.com/Takinmu1/Shiny-Application-and-Reproducible-Pitch
 
 ## Shiny can be used in presentations
 
@@ -20,7 +22,7 @@ The main purpose of this presentation is to show that shiny can also be used in 
 
 ##  Summary
 
-The first step is to get a summary of the data. Then we graph it to see if the horsepower increases as the number of cylinders increase
+The first step is to get a summary of the data. Then we graph it to see if the horsepower increases as the number of cylinders increase.
 ```{r, message=FALSE}
 data(mtcars)
 sapply(mtcars, summary)
