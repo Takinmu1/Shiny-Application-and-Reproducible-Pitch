@@ -1,0 +1,57 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "Tobi Akinmusuru"
+date: "4/27/2022"
+output: ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Shiny Presentation
+
+This presentation will be used to promote the shiny app created to graph mtcars data.  The app will help display the relationship between miles per gallon and horsepower filtered based on the number of cylinders a car has.
+
+## Shiny can be used in presentations
+
+The main purpose of this presentation is to show that shiny can also be used in presentations and not just as an app.  The interactive plot uses the MTCars data from the R library.  Adjust the number of cylinders the cars has to view the relationship between MPG and HP.  Notice how the input slider increases by steps of 2 because the cars in the data set are only 4, 6 and 8 cylinder cars.
+
+##  Summary
+
+The first step is to get a summary of the data. Then we graph it to see if the horsepower increases as the number of cylinders increase
+```{r, message=FALSE}
+data(mtcars)
+sapply(mtcars, summary)
+```
+
+
+## Interactive Plot
+
+```{r eruptions}
+inputPanel(
+    sliderInput("Cylinders",
+                        "Number of Cylinders:",
+                        min = 4,
+                        max = 8,
+                        value = 4,
+                        step = 2)
+)
+
+renderPlot({
+        set.seed(2022-04-27)
+        Model1 <-mtcars[mtcars$cyl==input$Cylinders,]
+        fit <- lm(mpg~ hp, data=Model1)
+        dataX<- Model1$hp
+        dataY<- Model1$mpg
+        plot(dataX, dataY, data= Model1, xlab="HP", ylab="MPG", col= "blue")
+        abline(lm(dataY~ dataX, data = Model1), col="red")
+
+    })
+```
+
+
+
+
+
